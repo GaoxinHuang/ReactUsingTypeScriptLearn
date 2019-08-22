@@ -1,0 +1,18 @@
+L	Initialize a React project
+二.	实际操作
+1.	npm install -g create-react-app (react-scripts@2.1.0最低)
+-----------------------------------------------
+方法一:
+2.	create-react-app app_name
+3.	安装typescript:	npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+
+4.1	将用到react的xxx.js(除了serviceWorker.js) 变成 .tsx
+4.2	将没有用到react的xxx.js 变成 .ts
+注:	除了 serviceWorker.js, 其他需要改成ts。
+如果想要改 serviceWorker.js, 需要将里面的 function 的参数 都加上 any (目前看有三个地方需要添加), 比如 registerValidSW(swUrl:any, config?:any) 
+
+5.	自动生成 tsconfig.json:	npm start 会自动生成 tsconfig.json
+
+方法二:
+3.	yarn create react-app app_name --typescript 或 npx create-react-app app_name --typescript
+
