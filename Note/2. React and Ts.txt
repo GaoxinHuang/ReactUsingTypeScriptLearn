@@ -1,1 +1,36 @@
-L Introduction to TypeScript with React
+L	Basic Types
+  const stringValue: string = "basic type";
+  const numberValue: number = 1;
+  const boolValue: boolean = true;
+  const arrayValue:number[] = [1,2,3]; //注: typeof 是 object
+  const arrayValue:Array<number> = [1,2,3]; //注: typeof 是 object
+
+
+L	Other complex types  
+  let aTuple: [string, number] = ["string", 123];
+  console.log(aTuple[0]); //输出: string
+  enum enumValue { first, second = 2 };
+  //注: (1) 通常支持 string 和 number. (2) 可以无需初始化值. (3) 默认是 0
+  let anyValue: any = "";
+  const warning = ():void => {
+    //return type is null
+  }
+  
+L	Functional/stateless component
+1.	引用的 component 
+import Message from './Message';
+....
+	<div className="App">
+        <Message message='App Message'/>
+    </div>
+//注：	这里引入 message. 如果在Message组件没有 props 作为参数，就会报错
+
+2.	Message.tsx 中
+import React from 'react';
+const Message = (props:{message: any}) =>{ //注： props:any 也是可以的
+    return (<p>
+        This is message from {props.message}
+    </p>)
+}
+export default Message;
+//functional component 默认的return 是 any, 除非是特别的，可以添加其他的

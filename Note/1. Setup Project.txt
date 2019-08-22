@@ -4,7 +4,8 @@ L	Initialize a React project
 -----------------------------------------------
 方法一:
 2.	create-react-app app_name
-3.	安装typescript:	npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+3.	安装typescript:	npm install --save typescript @types/node @types/react-dom @types/jest @types/react
+注:	@types/react 不是必须的
 
 4.1	将用到react的xxx.js(除了serviceWorker.js) 变成 .tsx
 4.2	将没有用到react的xxx.js 变成 .ts
