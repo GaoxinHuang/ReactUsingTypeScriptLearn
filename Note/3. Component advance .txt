@@ -1,0 +1,44 @@
+L	Functional/stateless component with Interface
+1.	引用的 component 
+import Message from './Message';
+....
+	<div className="App">
+        <Message message='App Message'/>
+    </div>
+//注：	这里引入 message. 如果在Message组件没有 props 作为参数，就会报错
+
+2.	Message.tsx 中
+import React from 'react';
+interface UserMessage{
+    name:string;
+    message: string;
+} 
+// props: 配置 message
+const Message = (props:UserMessage) =>{ //注: props: {    name:string; message: string; } 也是可以的 
+    return (<p>
+        This is message from {props.name},  {props.message}
+    </p>)
+}
+
+-----------------------------------------------------------------------------
+L	Class/stateful component with Interface & states
+const initalState = {
+    name:'M',
+    message: 'TS'
+}
+type StateType = Readonly<typeof initalState> 
+
+interface AppProps{
+    mss:string;
+}
+class ClassApp extends React.Component<AppProps, StateType>{
+    readonly state: StateType = initalState;
+    render(){
+        return (<div >Functional Class, {this.state.message}</div>)
+    }
+}
+export default ClassApp;
+
+//注: Component<props,state>: 在TS 就是默认这样. 
+------------------------------------------------------------------------------
+L.	Higher Order Components 

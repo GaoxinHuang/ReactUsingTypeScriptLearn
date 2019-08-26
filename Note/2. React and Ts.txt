@@ -4,8 +4,7 @@ L	Basic Types
   const boolValue: boolean = true;
   const arrayValue:number[] = [1,2,3]; //注: typeof 是 object
   const arrayValue:Array<number> = [1,2,3]; //注: typeof 是 object
-
-
+-----------------------------------------------------------------------------------
 L	Other complex types  
   let aTuple: [string, number] = ["string", 123];
   console.log(aTuple[0]); //输出: string
@@ -15,7 +14,7 @@ L	Other complex types
   const warning = ():void => {
     //return type is null
   }
-  
+--------------------------------------------------------------------------
 L	Functional/stateless component
 1.	引用的 component 
 import Message from './Message';
@@ -34,3 +33,14 @@ const Message = (props:{message: any}) =>{ //注： props:any 也是可以的
 }
 export default Message;
 //functional component 默认的return 是 any, 除非是特别的，可以添加其他的
+-----------------------------------------------------------------------------
+
+L	Class/stateful component syntax
+import React from 'react';
+class ClassApp extends React.Component<any>{
+    render(){
+        return (<div>Functional Class</div>)
+    }
+}
+
+export default ClassApp;

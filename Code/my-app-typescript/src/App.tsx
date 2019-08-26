@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Message from './Message';
+import Message from './FunctionalMessage';
+import ClassApp from './ClassApp';
 
 const App: React.FC = () => {
   //basic type:
@@ -27,10 +28,11 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Message message='App Message'/>
+        <Message message='App Message' name='hello'/>
         <p>
           Edit <code>src/App.tsx</code> {typeof arrayValue}.
         </p>
+        <ClassApp mss='xx'  />
       </header>
     </div>
   );
