@@ -4,6 +4,7 @@
 // let mySearch:SearchFunc;
 
 import React from 'react';
+import Message from './FunctionalMessage'
 
 const initalState = {
     name:'M',
@@ -16,7 +17,9 @@ interface AppProps{
 class ClassApp extends React.Component<AppProps, StateType>{
     readonly state: StateType = initalState;
     render(){
-        return (<div >Functional Class, {this.state.message}</div>)
+        return (<div >Functional Class, {this.state.message}
+        <div><Message /></div>
+        </div>)
     }
 }
 export default ClassApp;

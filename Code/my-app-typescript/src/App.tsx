@@ -28,7 +28,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Message message='App Message' name='hello'/>
+        <Message />
         <p>
           Edit <code>src/App.tsx</code> {typeof arrayValue}.
         </p>

@@ -41,4 +41,47 @@ export default ClassApp;
 
 //注: Component<props,state>: 在TS 就是默认这样. 
 ------------------------------------------------------------------------------
-L.	Higher Order Components 
+L.	Higher Order Components  
+一.	参考 HOC 的正确使用 - https://reactjs.org/docs/higher-order-components.html
+二.	实际代码:
+1.	Hoc.tsx 代码
+import React from 'react';
+const initalState = { //因为HOC不需要是最高级的Component, 不需要别人传入任何 props, 所以是用state
+    name: 'M',
+    message: 'TS'
+}
+type StateType = Readonly<typeof initalState>
+const messageHoc = (WrappedComponent: any) => {
+    class HOC extends React.Component<{}, StateType>{
+        readonly state: StateType = initalState;
+        render() {
+            return (<WrappedComponent message={this.state.message} name={this.state.name} />)
+        }
+    }
+    return HOC;
+}
+export default messageHoc;
+
+2.	FunctionalMessage.tsx - 被HOC 包裹
+import React from 'react';
+import messageHoc from './Hoc';
+const exmple =(props:any):any => <p> This is message from {props.name}, {props.message}</p>
+export default messageHoc(exmple); //注: 这里包裹的用法
+
+3.	ClassApp.tsx --- 父类组件, 调用被包裹的子类组件
+import React from 'react';
+import Message from './FunctionalMessage';
+
+class ClassApp extends React.Component<AppProps, StateType>{
+    render(){
+        return (<div><Message /></div>) //注: 之前被export出来的就是 messageHoc(exmple), 这个是一个function. 所以没有参数
+    }
+}
+export default ClassApp;
+//输出: This is message from M, TS
+
+三.	Best Pratices HOC:
+1.	Don't change HOC, when it is in user
+2.	 <WrappedComponent	injectedProp={injectedProp}	{...passThroughProps}	/>
+3.	Don't use HOCs inside of a render method
+4.	HOC are useful when an application grows
