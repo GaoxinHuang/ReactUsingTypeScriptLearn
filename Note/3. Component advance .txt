@@ -33,6 +33,12 @@ interface AppProps{
 }
 class ClassApp extends React.Component<AppProps, StateType>{
     readonly state: StateType = initalState;
+    //写法二: state: Readonly<StateType> = initalState;
+    //写法三: 写到constructor, 如下:
+    //constructor(props: ReportsIndexModel) {
+        //super(props);
+	this.state=initalState;
+    //}
     render(){
         return (<div >Functional Class, {this.state.message}</div>)
     }
